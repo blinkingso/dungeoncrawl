@@ -30,6 +30,7 @@ impl Map {
         }
     }
 
+    #[allow(dead_code)]
     /// Render the map. The map needs to be able to draw itself to the screen.
     pub fn render(&self, ctx: &mut BTerm, camera: &Camera) {
         //TODO means what?
