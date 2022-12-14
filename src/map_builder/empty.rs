@@ -1,4 +1,4 @@
-use super::*;
+use super::{themes::DungeonTheme, *};
 use crate::prelude::*;
 
 pub struct EmptyArchitect {}
@@ -10,6 +10,7 @@ impl MapArchitect for EmptyArchitect {
             monster_spawns: Vec::new(),
             player_start: Point::zero(),
             amulet_start: Point::zero(),
+            theme: Box::new(DungeonTheme),
         };
 
         // 初始化全部为墙

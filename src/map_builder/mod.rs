@@ -5,6 +5,7 @@ mod drunkard;
 mod empty;
 mod prefab;
 mod rooms;
+mod themes;
 
 use crate::prelude::*;
 
@@ -18,6 +19,7 @@ pub struct MapBuilder {
     pub monster_spawns: Vec<Point>,
     pub player_start: Point,
     pub amulet_start: Point,
+    pub theme: Box<dyn MapTheme>,
 }
 
 impl MapBuilder {
@@ -102,8 +104,14 @@ impl MapBuilder {
             1 => Box::new(rooms::RoomsArchitect {}),
             _ => Box::new(automata::CellularMataArchitect {}),
         };
+        architect = Box::new(rooms::RoomsArchitect {});
         let mut mb = architect.new(rng);
         apply_prefab(&mut mb, rng);
+
+        mb.theme = match rng.range(0, 2) {
+            0 => themes::DungeonTheme::new(),
+            _ => themes::ForestTheme::new(),
+        };
         mb
     }
 

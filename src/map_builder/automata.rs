@@ -1,6 +1,6 @@
 //! Cellular Automata Architect.
 
-use super::MapArchitect;
+use super::{themes::DungeonTheme, MapArchitect};
 use crate::prelude::*;
 
 pub struct CellularMataArchitect {}
@@ -13,6 +13,7 @@ impl MapArchitect for CellularMataArchitect {
             monster_spawns: vec![],
             player_start: Point::zero(),
             amulet_start: Point::zero(),
+            theme: Box::new(DungeonTheme),
         };
 
         self.random_noise_map(rng, &mut mb.map);

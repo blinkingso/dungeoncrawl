@@ -1,4 +1,4 @@
-use super::MapArchitect;
+use super::{themes::DungeonTheme, MapArchitect};
 use crate::prelude::*;
 
 const STAGGER_DISTANCE: usize = 400;
@@ -15,6 +15,7 @@ impl MapArchitect for DrunkardsWalkArchitect {
             monster_spawns: vec![],
             player_start: Point::zero(),
             amulet_start: Point::zero(),
+            theme: Box::new(DungeonTheme),
         };
         mb.fill(TileType::Wall);
         let center = Point::new(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);

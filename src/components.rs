@@ -14,7 +14,9 @@ pub struct Render {
 
 /// 玩家
 #[derive(Debug, Clone, Copy, PartialEq)]
-pub struct Player;
+pub struct Player {
+    pub map_level: u32,
+}
 
 /// 敌人
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -82,4 +84,21 @@ impl FieldOfView {
             is_dirty: true,
         }
     }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ProvidesHealing {
+    pub amount: i32,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct ProvidesDungeonMap;
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Carried(pub Entity);
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct ActivateItem {
+    pub used_by: Entity,
+    pub item: Entity,
 }
